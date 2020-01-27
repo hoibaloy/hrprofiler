@@ -26,13 +26,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${empList }" var="emp">
-								<tr>
-									<td>${emp.getId() }</td>
-									<td>${emp.getLastName() }, ${emp.getFirstName() } ${emp.getMiddleName() }</td>
-									<td><a href="updateemployee" id="requestbtn" class="requestbtn">Update</a></td>
-								</tr>
-							</c:forEach>
+							<c:choose>
+							  <c:when test="${!empty empList }">
+								<c:forEach items="${empList }" var="emp">
+									<tr>
+										<td>${emp.getId() }</td>
+										<td>${emp.getLastName() }, ${emp.getFirstName() } ${emp.getMiddleName() }</td>
+										<td><a href="updateemployee" id="requestbtn" class="requestbtn">Update</a></td>
+									</tr>
+								</c:forEach>
+							  </c:when>
+							  <c:otherwise>
+							  </c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 				</div>
